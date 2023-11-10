@@ -4,18 +4,18 @@ pipeline{
 stages {
    stage('build') {
 steps {
-    cd coit-backend1 && mvn install
+    sh 'cd coit-backend1 && mvn install'
 }
 }
  stage('docker-build') {
 steps {
-    cd coit-backend1
-    docker build -t shravyakunta94/coit-backend1:latest .
+    sh 'cd coit-backend1 && docker build -t coit-backend1 .'
 }
 }
  stage('docker-push') {
 steps {
-    docker push shravyakunta94/coit-backend1:latest
+     sh 'echo "push"'
+    //docker push shravyakunta94/coit-backend1:latest
 }
 }
 }
